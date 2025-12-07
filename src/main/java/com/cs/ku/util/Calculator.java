@@ -1,24 +1,37 @@
 package com.cs.ku.util;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
 public class Calculator {
 
-    public int add(int a, int b) {
-        return a + b;
+    public double add(Number a, Number b) {
+        var bigA = BigDecimal.valueOf(a.doubleValue());
+        var bigB = BigDecimal.valueOf(b.doubleValue());
+        return bigA.add(bigB).doubleValue();
     }
 
-    public int subtract(int a, int b) {
-        return a - b;
+    public double subtract(Number a, Number b) {
+        var bigA = BigDecimal.valueOf(a.doubleValue());
+        var bigB = BigDecimal.valueOf(b.doubleValue());
+        return bigA.subtract(bigB).doubleValue();
     }
 
-    public int multiply(int a, int b) {
-        return a * b;
+    public double multiply(Number a, Number b) {
+        var bigA = BigDecimal.valueOf(a.doubleValue());
+        var bigB = BigDecimal.valueOf(b.doubleValue());
+        return bigA.multiply(bigB).doubleValue();
     }
 
-    public int divide(int a, int b) {
-        if (b == 0) {
-            throw new IllegalArgumentException("Division by zero is not allowed.");
+    public double divide(Number a, Number b) {
+        var bigA = BigDecimal.valueOf(a.doubleValue());
+        var bigB = BigDecimal.valueOf(b.doubleValue());
+
+        if (BigDecimal.ZERO.compareTo(bigB) == 0) {
+            throw new ArithmeticException("Division by zero is not allowed.");
         }
-        return a / b;
+
+        return bigA.divide(bigB, RoundingMode.HALF_UP).doubleValue();
     }
 
     public int power(int base, int exponent) {
