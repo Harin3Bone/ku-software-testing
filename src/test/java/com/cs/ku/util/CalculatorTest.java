@@ -117,4 +117,27 @@ class CalculatorTest {
         assertThrows(ArithmeticException.class, () -> calculator.divide(10, 0));
     }
 
+    @ParameterizedTest(name = "{0}")
+    @CsvSource(value = {
+        "Positive power positive, 2, 3, 8",
+        "Positive power zero, 5, 0, 1",
+        "Positive power negative, 2, -2, -1",
+        "Negative power positive, -2, 3, -8",
+        "Negative power zero, -7, 0, 1",
+        "Negative power negative, -4, -4, -1",
+        "One power positive, 1, 100, 1",
+        "One power negative, 1, -100, -1",
+        "Zero power positive, 0, 5, 0"
+    }, delimiter = ',')
+    void testPower_shouldPass(String scenarioName, int base, int exponent, int expected) {
+        // given
+        var calculator = new Calculator();
+
+        // when
+        var actual = calculator.power(base, exponent);
+
+        // then
+        assertEquals(expected, actual);
+    }
+
 }
