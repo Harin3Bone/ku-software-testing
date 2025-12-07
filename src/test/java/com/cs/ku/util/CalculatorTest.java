@@ -1,5 +1,6 @@
 package com.cs.ku.util;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -9,11 +10,15 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class CalculatorTest {
 
+    private Calculator calculator;
+
+    @BeforeEach
+    void setup() {
+        calculator = new Calculator();
+    }
+
     @Test
     void testAddPositive() {
-        // given
-        var calculator = new Calculator();
-
         // when
         var actual = calculator.add(1, 2);
 
@@ -23,9 +28,6 @@ class CalculatorTest {
 
     @Test
     void testAddNegative() {
-        // given
-        var calculator = new Calculator();
-
         // when
         var actual = calculator.add(-3, -4);
 
@@ -42,9 +44,6 @@ class CalculatorTest {
             "Add positive and negative, -1.5, 1.5, 0.0"
     }, delimiter = ',')
     void testAdd_shouldPass(String scenarioName, double a, double b, double expected) {
-        // given
-        var calculator = new Calculator();
-
         // when
         var actual = calculator.add(a, b);
 
@@ -61,9 +60,6 @@ class CalculatorTest {
         "Subtract positive and negative, -1.5, 1.5, -3.0"
     }, delimiter = ',')
     void testSubtract_shouldPass(String scenarioName, double a, double b, double expected) {
-        // given
-        var calculator = new Calculator();
-
         // when
         var actual = calculator.subtract(a, b);
 
@@ -80,9 +76,6 @@ class CalculatorTest {
         "Multiply positive precision, 2.5, 4.0, 10.0"
     }, delimiter = ',')
     void testMultiply_shouldPass(String scenarioName, double a, double b, double expected) {
-        // given
-        var calculator = new Calculator();
-
         // when
         var actual = calculator.multiply(a, b);
 
@@ -98,9 +91,6 @@ class CalculatorTest {
         "Divide by precision, 7.5, 2.5, 3.0"
     }, delimiter = ',')
     void testDivide_shouldPass(String scenarioName, double a, double b, double expected) {
-        // given
-        var calculator = new Calculator();
-
         // when
         var actual = calculator.divide(a, b);
 
@@ -110,9 +100,6 @@ class CalculatorTest {
 
     @Test
     void testDivide_shouldFailure() {
-        // given
-        var calculator = new Calculator();
-
         // When & Then
         assertThrows(ArithmeticException.class, () -> calculator.divide(10, 0));
     }
@@ -130,9 +117,6 @@ class CalculatorTest {
         "Zero power positive, 0, 5, 0"
     }, delimiter = ',')
     void testPower_shouldPass(String scenarioName, int base, int exponent, int expected) {
-        // given
-        var calculator = new Calculator();
-
         // when
         var actual = calculator.power(base, exponent);
 
