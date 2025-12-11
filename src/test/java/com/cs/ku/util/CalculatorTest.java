@@ -18,7 +18,7 @@ class CalculatorTest {
     }
 
     @Test
-    void testAddPositive() {
+    void testAddPositive_shouldPass() {
         // when
         var actual = calculator.add(1, 2);
 
@@ -27,7 +27,7 @@ class CalculatorTest {
     }
 
     @Test
-    void testAddNegative() {
+    void testAddNegative_shouldPass() {
         // when
         var actual = calculator.add(-3, -4);
 
@@ -102,6 +102,25 @@ class CalculatorTest {
     void testDivide_shouldFailure() {
         // When & Then
         assertThrows(ArithmeticException.class, () -> calculator.divide(10, 0));
+    }
+
+    @Test
+    void testPowerBasePositivePowerZero_shouldPass() {
+        // when
+        int actual = calculator.power(5,0);
+
+        // then
+        assertEquals(1, actual);
+    }
+
+
+    @Test
+    void testPowerBasePositivePowerOne_shouldPass() {
+        // when
+        int actual = calculator.power(5,1);
+
+        // then
+        assertEquals(5, actual);
     }
 
     @ParameterizedTest(name = "{0}")
