@@ -1,8 +1,8 @@
 HELP.md
 target/
 .mvn/wrapper/maven-wrapper.jar
-!**/src/main/**/target/
-!**/src/test/**/target/
+!assignment/1/src/main/**/target/
+!assignment/1/src/test/**/target/
 
 ### IntelliJ IDEA ###
 .idea
@@ -26,11 +26,14 @@ target/
 /nbdist/
 /.nb-gradle/
 build/
-!**/src/main/**/build/
-!**/src/test/**/build/
+!assignment/1/src/main/**/build/
+!assignment/1/src/test/**/build/
 
 ### VS Code ###
 .vscode/
 
 ### Mac OS ###
 .DS_Store
+
+### Unnecessary ###
+/assignment
