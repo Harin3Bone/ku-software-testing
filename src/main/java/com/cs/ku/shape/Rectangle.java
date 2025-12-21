@@ -1,4 +1,4 @@
-package com.cs.ku.util;
+package com.cs.ku.shape;
 
 public class Rectangle {
 

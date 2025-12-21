@@ -1,4 +1,4 @@
-package com.cs.ku.util;
+package com.cs.ku.shape;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
