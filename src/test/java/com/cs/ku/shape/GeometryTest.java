@@ -8,7 +8,7 @@ import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class GeometryTest {
+class GeometryTest {
 
     private static final String EQUILATERAL = "Equilateral";
     private static final String ISOSCELES = "Isosceles";
@@ -31,6 +31,7 @@ public class GeometryTest {
         assertEquals(expected, actual);
     }
 
+    @SuppressWarnings("unused")
     private static Stream<Arguments> getTriangleTypeStatementCoverage() {
         return Stream.of(
                 Arguments.of(0, 1, 1, INVALID),
@@ -44,6 +45,7 @@ public class GeometryTest {
         );
     }
 
+    @SuppressWarnings("unused")
     private static Stream<Arguments> getTriangleTypeDecisionCoverage() {
         return Stream.of(
                 Arguments.of(0, 0, 1, INVALID),
