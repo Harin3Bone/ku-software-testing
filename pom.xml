@@ -14,12 +14,18 @@
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
+        <lombok.version>1.18.42</lombok.version>
         <slf4j.version>2.0.17</slf4j.version>
         <junit.jupiter.version>6.1.0-M1</junit.jupiter.version>
     </properties>
 
     <dependencies>
-        <!-- Monitoring -->
+        <!-- Utils -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+        </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>

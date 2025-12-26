@@ -1,14 +1,14 @@
 package com.cs.ku.shape;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+
+@Getter
+@AllArgsConstructor
 public class Rectangle {
 
     private double length;
     private double width;
-
-    public Rectangle(double length, double width) {
-        this.length = length;
-        this.width = width;
-    }
 
     public double getArea() {
         return length * width;
@@ -19,11 +19,4 @@ public class Rectangle {
         this.width += factor;
     }
 
-    public double getLength() {
-        return length;
-    }
-
-    public double getWidth() {
-        return width;
-    }
 }

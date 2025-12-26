@@ -1,5 +1,6 @@
 package com.cs.ku.shape;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -8,6 +9,7 @@ import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+@Slf4j
 class GeometryTest {
 
     private static final String EQUILATERAL = "Equilateral";
@@ -21,13 +23,13 @@ class GeometryTest {
             "getTriangleTypeDecisionCoverage"
     })
     void testGetTriangleType(int a, int b, int c, String expected) {
-        System.out.println("Test getTriangleType with sides: " + a + ", " + b + ", " + c);
+        log.info("getTriangle with sides: {}, {}, {}", a, b, c);
 
         // when
         var actual = Geometry.getTriangleType(a, b, c);
 
         // then
-        System.out.println("Expected: " + expected + ", Actual: " + actual);
+        log.debug("Expected: {}, Actual: {}", expected, actual);
         assertEquals(expected, actual);
     }
 
