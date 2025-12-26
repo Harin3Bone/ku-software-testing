@@ -3,6 +3,7 @@ package com.cs.ku.shape;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.stream.Stream;
@@ -18,11 +19,26 @@ class GeometryTest {
     private static final String INVALID = "Invalid";
 
     @ParameterizedTest
+    @CsvSource(value = {
+            "3, 3, 3, Equilateral",
+            "3, 5, 5, Isosceles",
+            "3, 4, 5, Scalene",
+            "0, 0, 0, Invalid"
+    })
+    void testGetTriangleTypeBlackBox(int a, int b, int c, String expected) {
+        // when
+        var actual = Geometry.getTriangleType(a, b, c);
+
+        // then
+        assertEquals(expected, actual);
+    }
+
+    @ParameterizedTest
     @MethodSource(value = {
             "getTriangleTypeStatementCoverage",
             "getTriangleTypeDecisionCoverage"
     })
-    void testGetTriangleType(int a, int b, int c, String expected) {
+    void testGetTriangleTypeWhiteBox(int a, int b, int c, String expected) {
         log.info("getTriangle with sides: {}, {}, {}", a, b, c);
 
         // when
