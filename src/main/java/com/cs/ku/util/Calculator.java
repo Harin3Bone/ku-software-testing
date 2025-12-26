@@ -36,7 +36,7 @@ public class Calculator {
 
     public int power(int base, int exponent) {
         int result = 1;
-        if (exponent < 0) return -1;
+        if (exponent < 0) throw new ArithmeticException("Negative exponent not supported.");
 
         for (int i = 0; i < exponent; i++) {
             result *= base;

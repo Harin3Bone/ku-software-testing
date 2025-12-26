@@ -1,5 +1,6 @@
-package com.cs.ku.util;
+package com.cs.ku.shape;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
@@ -8,34 +9,35 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+@Slf4j
 class RectangleTest {
 
     private Rectangle rectangle;
 
     @BeforeAll
     static void beforeAll() {
-        System.out.println("Before all tests.");
+        log.info("Before all tests.");
     }
 
     @BeforeEach
     void setUp() {
-        System.out.println("Setup.");
+        log.info("Setup.");
         rectangle = new Rectangle(4.0, 5.0);
     }
 
     @AfterEach
     void tearDown() {
-        System.out.println("Tear down.");
+        log.info("Tear down.");
     }
 
     @AfterAll
     static void afterAll() {
-        System.out.println("After all tests.");
+        log.info("After all tests.");
     }
 
     @Test
     void testGetArea() {
-        System.out.println("Test getArea.");
+        log.info("Test getArea.");
 
         // when
         var actual = rectangle.getArea();
@@ -46,7 +48,7 @@ class RectangleTest {
 
     @Test
     void testGetAreaWithDelta() {
-        System.out.println("Test Get Area with Delta.");
+        log.info("Test Get Area with Delta.");
 
         // when
         var actual = rectangle.getArea();
@@ -57,7 +59,7 @@ class RectangleTest {
 
     @Test
     void testChangeSize() {
-        System.out.println("Test Change Size.");
+        log.info("Test Change Size.");
 
         // when
         rectangle.changeSize(10);
