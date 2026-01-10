@@ -34,9 +34,10 @@ class GeometryTest {
     }
 
     @ParameterizedTest
-    @MethodSource(value = {
-            "getTriangleTypeStatementCoverage",
-            "getTriangleTypeDecisionCoverage"
+    @MethodSource({
+            "sourceForStatementCoverage",
+            "sourceForDecisionCoverage",
+            "sourceForConditionCoverage"
     })
     void testGetTriangleTypeWhiteBox(int a, int b, int c, String expected) {
         log.info("getTriangle with sides: {}, {}, {}", a, b, c);
@@ -49,8 +50,8 @@ class GeometryTest {
         assertEquals(expected, actual);
     }
 
-    @SuppressWarnings("unused")
-    private static Stream<Arguments> getTriangleTypeStatementCoverage() {
+    @SuppressWarnings("java:S1144")
+    private static Stream<Arguments> sourceForStatementCoverage() {
         return Stream.of(
                 Arguments.of(0, 1, 1, INVALID),
                 Arguments.of(1, 2, 4, INVALID),
@@ -63,9 +64,31 @@ class GeometryTest {
         );
     }
 
-    @SuppressWarnings("unused")
-    private static Stream<Arguments> getTriangleTypeDecisionCoverage() {
+    @SuppressWarnings("java:S1144")
+    private static Stream<Arguments> sourceForDecisionCoverage() {
         return Stream.of(
+                Arguments.of(3, 3, 3, EQUILATERAL),
+                Arguments.of(3, 3, 4, ISOSCELES),
+                Arguments.of(4, 3, 3, ISOSCELES),
+                Arguments.of(3, 4, 3, ISOSCELES),
+                Arguments.of(3, 4, 5, SCALENE),
+                Arguments.of(0, 4, 5, INVALID),
+                Arguments.of(1, 4, 2, INVALID),
+                Arguments.of(6, 3, 3, INVALID)
+        );
+    }
+
+    @SuppressWarnings("java:S1144")
+    private static Stream<Arguments> sourceForConditionCoverage() {
+        return Stream.of(
+                Arguments.of(0, 1, 1, INVALID),
+                Arguments.of(1, 2, 4, INVALID),
+                Arguments.of(3, 4, 5, SCALENE),
+                Arguments.of(3, 3, 3, EQUILATERAL),
+                Arguments.of(3, 3, 4, ISOSCELES),
+                Arguments.of(4, 3, 3, ISOSCELES),
+                Arguments.of(3, 4, 3, ISOSCELES),
+                Arguments.of(1, 1, 2, INVALID),
                 Arguments.of(0, 0, 1, INVALID),
                 Arguments.of(0, 1, 0, INVALID),
                 Arguments.of(-1, 1, 1, INVALID),
