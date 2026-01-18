@@ -1,8 +1,11 @@
 package com.cs.ku.bank;
 
+import com.cs.ku.bank.service.impl.CustomerFileDataServiceStub;
 import com.cs.ku.bank.stub.CustomerStub;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -18,8 +21,13 @@ class BankTest {
     void setup() {
         // Stub
         customerStub = new CustomerStub(1, 1234, "Jane Doe");
+        CustomerFileDataServiceStub customerDataService = new CustomerFileDataServiceStub();
+        customerDataService.addCustomer(customerStub);
+        customerDataService.addCustomer(new Customer(2, 5678, "John Smith"));
+        customerDataService.addCustomer(new Customer(3, 9012, "Adam Warlock"));
 
-        bank = new Bank("Test Bank");
+        // Setup
+        bank = new Bank("Test Bank", customerDataService);
         bank.addCustomer(customerStub);
     }
 
@@ -66,6 +74,30 @@ class BankTest {
 
         // Then
         assertFalse(actual);
+    }
+
+    @Test
+    void testGetCustomerFromFiles() {
+        // Given
+        var expected = new ArrayList<Customer>();
+        expected.add(customerStub);
+        expected.add(new Customer(2, 5678, "John Smith"));
+        expected.add(new Customer(3, 9012, "Adam Warlock"));
+
+        // When
+        var actual = bank.getCustomerFromFiles();
+
+        // Then
+        assertNotNull(actual);
+        assertEquals(3, actual.size());
+
+        for (var i = 0; i < actual.size(); i++) {
+            var actualCustomer = actual.get(i);
+            var expectedCustomer = expected.get(i);
+            assertEquals(expectedCustomer.getId(), actualCustomer.getId());
+            assertEquals(expectedCustomer.getPin(), actualCustomer.getPin());
+            assertEquals(expectedCustomer.getName(), actualCustomer.getName());
+        }
     }
 
 }
