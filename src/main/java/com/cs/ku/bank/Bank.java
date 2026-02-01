@@ -3,11 +3,13 @@ package com.cs.ku.bank;
 import com.cs.ku.bank.service.DataService;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.extern.slf4j.Slf4j;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+@Slf4j
 @Getter
 @Setter
 public class Bank {
@@ -54,6 +56,7 @@ public class Bank {
 
     public void giveInterestAll(double rate) {
         for (BankAccount account : accounts.values()) {
+            log.info("Giving interest {} to account: {}", rate, account.getName());
             account.addInterest(rate);
         }
     }
