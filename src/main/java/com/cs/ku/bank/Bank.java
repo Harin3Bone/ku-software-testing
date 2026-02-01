@@ -13,13 +13,17 @@ import java.util.Map;
 public class Bank {
 
     private String bankName;
-    private Map<Integer, Customer> customers;
+    private final Map<Integer, Customer> customers = new HashMap<>();
+    private final Map<String, BankAccount> accounts = new HashMap<>();
     private DataService<Customer> customerDataService;
 
     public Bank(String bankName, DataService<Customer> customerDataService) {
         this.bankName = bankName;
-        this.customers = new HashMap<>();
         this.customerDataService = customerDataService;
+    }
+
+    public Bank(String bankName) {
+        this.bankName = bankName;
     }
 
     public void addCustomer(Customer customer) {
@@ -37,6 +41,21 @@ public class Bank {
 
     public List<Customer> getCustomerFromFiles() {
         return customerDataService.getAllData();
+    }
+
+    public void openAccount(BankAccount account) {
+        accounts.put(account.getName(), account);
+    }
+
+    public void transfer(String from, String to, double amount) {
+        accounts.get(from).withdraw(amount);
+        accounts.get(to).deposit(amount);
+    }
+
+    public void giveInterestAll(double rate) {
+        for (BankAccount account : accounts.values()) {
+            account.addInterest(rate);
+        }
     }
 
 }
