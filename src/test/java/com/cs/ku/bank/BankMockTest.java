@@ -14,10 +14,10 @@ class BankMockTest {
     private Bank bank;
 
     @Mock
-    BankAccount mockAccountA;
+    private BankAccount mockAccountA;
 
     @Mock
-    BankAccount mockAccountB;
+    private BankAccount mockAccountB;
 
     @BeforeEach
     void initMocks() {
@@ -27,13 +27,13 @@ class BankMockTest {
 
     @Test
     void testTransfer() {
-        // Given
-        bank.openAccount(mockAccountA);
-        bank.openAccount(mockAccountB);
-
         // Stub
         when(mockAccountA.getName()).thenReturn("A");
         when(mockAccountB.getName()).thenReturn("B");
+
+        // Given
+        bank.openAccount(mockAccountA);
+        bank.openAccount(mockAccountB);
 
         // When
         bank.transfer("A", "B", 1000);
