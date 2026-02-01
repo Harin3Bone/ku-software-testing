@@ -1,6 +1,6 @@
 package com.cs.ku.bank;
 
-import com.cs.ku.bank.service.impl.CustomerFileDataServiceStub;
+import com.cs.ku.bank.stub.CustomerFileDataServiceStub;
 import com.cs.ku.bank.stub.CustomerStub;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

@@ -1,4 +1,4 @@
-package com.cs.ku.bank.service.impl;
+package com.cs.ku.bank.stub;
 
 import com.cs.ku.bank.Customer;
 import com.cs.ku.bank.service.DataService;
