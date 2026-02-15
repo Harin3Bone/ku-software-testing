@@ -19,9 +19,9 @@ public class Order {
         this.date = LocalDateTime.now();
     }
 
-    public void addItem(Product prod, int quantity) {
-        items.add(new OrderItem(prod, quantity));
-        prod.cutStock(quantity);
+    public void addItem(Product product, int quantity) {
+        items.add(new OrderItem(product, quantity));
+        product.cutStock(quantity);
     }
 
     public double getTotal() {

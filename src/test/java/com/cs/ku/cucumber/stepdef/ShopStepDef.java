@@ -27,13 +27,25 @@ public class ShopStepDef {
 
     @When("I buy {string} with quantity {int}")
     public void i_buy_with_quantity(String name, int quantity) {
-        Product prod = catalog.getProduct(name);
-        order.addItem(prod, quantity);
+        Product product = catalog.getProduct(name);
+        order.addItem(product, quantity);
     }
 
     @Then("total should be {float}")
     public void total_should_be(double total) {
         assertEquals(total, order.getTotal());
+    }
+
+    @When("cut stock of product {string} with quantity {int}")
+    public void cut_stock_of_product_with_quantity(String name, int quantity) {
+        var product = catalog.getProduct(name);
+        product.cutStock(quantity);
+    }
+
+    @Then("stock of product {string} should be {int}")
+    public void stock_of_product_should_be(String name, int stock) {
+        var product = catalog.getProduct(name);
+        assertEquals(stock, product.getStock());
     }
 }
 
