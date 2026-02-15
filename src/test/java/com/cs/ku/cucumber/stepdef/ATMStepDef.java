@@ -1,6 +1,6 @@
 package com.cs.ku.cucumber.stepdef;
 
-import com.cs.ku.bank.BankBDD;
+import com.cs.ku.bank.Bank;
 import com.cs.ku.bank.Customer;
 import com.cs.ku.bank.ATM;
 import com.cs.ku.bank.exception.NotEnoughBalanceException;
@@ -17,12 +17,12 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class ATMStepDef {
 
     ATM atm;
-    BankBDD bank;
+    Bank bank;
     boolean validLogin;
 
     @Before
     public void init() {
-        bank = new BankBDD("KU Bank");
+        bank = new Bank("KU Bank");
         atm = new ATM(bank);
     }
 

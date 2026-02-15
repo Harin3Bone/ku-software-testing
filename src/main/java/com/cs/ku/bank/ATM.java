@@ -6,11 +6,11 @@ import lombok.Getter;
 @Getter
 public class ATM {
 
-    private BankBDD bank;
+    private Bank bank;
     private Customer currentCustomer;
     private BankAccount currentAccount;
 
-    public ATM(BankBDD bank) {
+    public ATM(Bank bank) {
         this.bank = bank;
     }
 

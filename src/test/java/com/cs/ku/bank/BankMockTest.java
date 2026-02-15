@@ -11,7 +11,7 @@ import static org.mockito.MockitoAnnotations.openMocks;
 
 class BankMockTest {
 
-    private Bank bank;
+    private BankUnit bank;
 
     @Mock
     private BankAccount mockAccountA;
@@ -22,7 +22,7 @@ class BankMockTest {
     @BeforeEach
     void setup() {
         openMocks(this);
-        bank = new Bank("Test Bank");
+        bank = new BankUnit("Test Bank");
     }
 
     @Test
