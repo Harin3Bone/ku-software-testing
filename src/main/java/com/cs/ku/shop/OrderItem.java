@@ -1,13 +1,12 @@
 package com.cs.ku.shop;
 
-public class OrderItem {
-    private int quantity;
-    private Product prod;
+import lombok.AllArgsConstructor;
 
-    public OrderItem(Product prod, int quantity) {
-        this.prod = prod;
-        this.quantity = quantity;
-    }
+@AllArgsConstructor
+public class OrderItem {
+
+    private Product prod;
+    private int quantity;
 
     public double getSubtotal() {
         return prod.getPrice() * quantity;
