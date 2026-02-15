@@ -1,5 +1,6 @@
 package com.cs.ku.bank;
 
+import com.cs.ku.bank.exception.NotEnoughBalanceException;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -72,7 +73,7 @@ class BankAccountTest {
 
     @SuppressWarnings("unused")
     private static Stream<Arguments> sourceForWithdrawBlackbox_balanceMustMoreThanAmount() {
-        var errException = IllegalStateException.class;
+        var errException = NotEnoughBalanceException.class;
         var errMsg = "Balance must be more than amount";
         return Stream.of(
                 Arguments.of("Balance > 0 and withdraw amount > balance", 1000.00, 2000.00, errException, errMsg),
