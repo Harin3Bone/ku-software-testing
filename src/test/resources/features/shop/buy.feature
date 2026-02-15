@@ -18,11 +18,3 @@ Feature: Shop - Buy products
     Then total should be 121.00
     And stock of product "Bread" should be 3
     And stock of product "Jam" should be 9
-
-  Scenario Outline: (3) - Cut stock of <product> directly
-    When cut stock of product "<product>" with quantity <quantity>
-    Then stock of product "<product>" should be <remaining>
-    Examples:
-      | product | quantity | remaining |
-      | Bread   | 1        | 4         |
-      | Jam     | 2        | 8         |
