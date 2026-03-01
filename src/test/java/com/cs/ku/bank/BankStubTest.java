@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class BankStubTest {
 
-    private Bank bank;
+    private BankUnit bank;
     private CustomerStub customerStub;
 
     @BeforeEach
@@ -27,7 +27,7 @@ class BankStubTest {
         customerDataService.addCustomer(new Customer(3, 9012, "Adam Warlock"));
 
         // Setup
-        bank = new Bank("Test Bank", customerDataService);
+        bank = new BankUnit("Test Bank", customerDataService);
         bank.addCustomer(customerStub);
     }
 
