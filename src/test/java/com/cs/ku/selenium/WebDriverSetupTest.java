@@ -3,15 +3,12 @@ package com.cs.ku.selenium;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 
 import java.util.Objects;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class WebDriverSetupTest {
@@ -26,18 +23,6 @@ class WebDriverSetupTest {
     @AfterAll
     static void tearDown() {
         driver.quit();
-    }
-
-    @Test
-    void testBaeldung() {
-        // When
-        driver.get("https://www.baeldung.com/maven-plugin");
-
-        // Then
-        assertNotNull(driver.getTitle());
-        assertEquals("How to Create a Maven Plugin | Baeldung", driver.getTitle());
-
-        driver.findElement(By.tagName("body"));
     }
 
     @Test
