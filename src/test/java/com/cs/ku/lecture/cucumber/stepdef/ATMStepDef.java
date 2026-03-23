@@ -10,9 +10,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class ATMStepDef {
 
@@ -26,65 +24,50 @@ public class ATMStepDef {
         atm = new ATM(bank);
     }
 
-    @Given("a customer with id {int} and pin {int} exists")
-    public void a_customer_with_id_and_pin_exists(int id, int pin) {
-        bank.openAccount(new Customer(id, pin));
-    }
-
     @Given("a customer with id {int} and pin {int} with balance {float} exists")
-    public void a_customer_with_id_and_pin_with_balance_exists(int id, int pin, double balance) {
+    public void givenCustomerData(int id, int pin, double balance) {
         bank.openAccount(new Customer(id, pin, balance));
     }
 
     @When("I login to ATM with id {int} and pin {int}")
-    public void i_login_to_ATM_with_id_and_pin(int id, int pin) {
+    public void whenLoginToATM(int id, int pin) {
         validLogin = atm.validateCustomer(id, pin);
     }
 
-    @Then("I can login")
-    public void i_can_login() {
-        assertTrue(validLogin);
-    }
-
-    @Then("I cannot login")
-    public void i_cannot_login() {
-        assertFalse(validLogin);
-    }
-
     @When("I withdraw {float} from ATM")
-    public void i_withdraw_from_atm(double amount) throws NotEnoughBalanceException {
+    public void whenWithdrawFromATM(double amount) throws NotEnoughBalanceException {
         atm.withdraw(amount);
     }
 
     @When("I overdraw {float} from ATM")
-    public void i_withdraw_from_atm_more_than_balance(double amount) throws NotEnoughBalanceException {
+    public void whenOverdrawFromATM(double amount) throws NotEnoughBalanceException {
         assertThrows(NotEnoughBalanceException.class,
                 () -> atm.withdraw(amount));
     }
 
     @When("I deposit {float} to ATM")
-    public void i_deposit_to_atm(double amount) {
+    public void whenDepositToATM(double amount) {
         atm.deposit(amount);
     }
 
     @When("I deposit negative amount {float} to ATM")
-    public void i_deposit_negative_amount_to_atm(double amount) {
+    public void whenDepositNegativeAmountToATM(double amount) {
         assertThrows(IllegalArgumentException.class,
                 () -> atm.deposit(amount));
     }
 
     @When("I transfer {float} to customer id {int}")
-    public void i_transfer_to_customer_id(double amount, int toId) throws NotEnoughBalanceException {
+    public void whenTransferAmountToCustomer(double amount, int toId) throws NotEnoughBalanceException {
         atm.transfer(toId, amount);
     }
 
     @Then("customer id {int} account balance is {float}")
-    public void customer_id_account_balance_is(int id, double balance) {
+    public void verifyCustomerBalance(int id, double balance) {
         assertEquals(balance, bank.getCustomer(id).getAccount().getBalance());
     }
 
     @Then("my account balance is {float}")
-    public void my_account_balance_is(double balance) {
+    public void verifyAccountBalance(double balance) {
         assertEquals(balance, atm.getBalance());
     }
 
