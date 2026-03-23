@@ -22,6 +22,8 @@
     </properties>
 
     <dependencies>
+        <!-- Spring Boot -->
+
         <!-- Utils -->
         <dependency>
             <groupId>org.projectlombok</groupId>
