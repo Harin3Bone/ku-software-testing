@@ -1,6 +1,5 @@
 package com.cs.ku.lecture.shape;
 
-import com.cs.ku.lecture.shape.Geometry;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;

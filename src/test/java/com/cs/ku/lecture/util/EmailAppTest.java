@@ -1,6 +1,5 @@
 package com.cs.ku.lecture.util;
 
-import com.cs.ku.lecture.util.EmailApp;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.params.ParameterizedTest;

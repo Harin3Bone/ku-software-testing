@@ -1,8 +1,8 @@
 package com.cs.ku.lecture.cucumber.stepdef;
 
+import com.cs.ku.lecture.bank.ATM;
 import com.cs.ku.lecture.bank.Bank;
 import com.cs.ku.lecture.bank.Customer;
-import com.cs.ku.lecture.bank.ATM;
 import com.cs.ku.lecture.bank.exception.NotEnoughBalanceException;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;

@@ -1,6 +1,5 @@
 package com.cs.ku.lecture.shape;
 
-import com.cs.ku.lecture.shape.Rectangle;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
