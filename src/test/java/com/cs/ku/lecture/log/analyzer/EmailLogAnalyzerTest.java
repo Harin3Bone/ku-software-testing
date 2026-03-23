@@ -1,6 +1,5 @@
 package com.cs.ku.lecture.log.analyzer;
 
-import com.cs.ku.lecture.log.analyzer.EmailLogAnalyzer;
 import com.cs.ku.lecture.log.service.EmailService;
 import com.cs.ku.lecture.log.service.LogService;
 import org.junit.jupiter.api.BeforeEach;

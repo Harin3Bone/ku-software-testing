@@ -1,7 +1,6 @@
 package com.cs.ku.lecture.hr.service;
 
 import com.cs.ku.lecture.hr.Employee;
-import com.cs.ku.lecture.hr.service.HumanResourceService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;

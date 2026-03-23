@@ -1,6 +1,5 @@
 package com.cs.ku.lecture.hr;
 
-import com.cs.ku.lecture.hr.Employee;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

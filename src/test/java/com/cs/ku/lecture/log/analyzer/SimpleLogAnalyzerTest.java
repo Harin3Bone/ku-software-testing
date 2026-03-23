@@ -1,6 +1,5 @@
 package com.cs.ku.lecture.log.analyzer;
 
-import com.cs.ku.lecture.log.analyzer.SimpleLogAnalyzer;
 import com.cs.ku.lecture.log.service.LogService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

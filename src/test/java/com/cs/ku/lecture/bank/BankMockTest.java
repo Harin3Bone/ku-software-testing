@@ -1,7 +1,5 @@
 package com.cs.ku.lecture.bank;
 
-import com.cs.ku.lecture.bank.BankAccount;
-import com.cs.ku.lecture.bank.BankUnit;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;

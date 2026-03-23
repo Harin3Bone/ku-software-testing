@@ -1,6 +1,5 @@
 package com.cs.ku.lecture.bank;
 
-import com.cs.ku.lecture.bank.Customer;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

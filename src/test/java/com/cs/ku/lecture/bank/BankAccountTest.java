@@ -1,6 +1,5 @@
 package com.cs.ku.lecture.bank;
 
-import com.cs.ku.lecture.bank.BankAccount;
 import com.cs.ku.lecture.bank.exception.NotEnoughBalanceException;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
