@@ -1,4 +1,4 @@
-package com.cs.ku.selenium;
+package com.cs.ku.lecture.selenium;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
