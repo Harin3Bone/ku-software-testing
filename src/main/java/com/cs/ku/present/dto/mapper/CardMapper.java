@@ -4,7 +4,7 @@ import com.cs.ku.present.constant.Status;
 import com.cs.ku.present.dto.request.CardRequest;
 import com.cs.ku.present.dto.response.CardResponse;
 import com.cs.ku.present.entity.Card;
-import com.cs.ku.present.util.TemporalFormatUtil;
+import com.cs.ku.present.util.TemporalUtil;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
@@ -25,9 +25,9 @@ public class CardMapper {
                 card.getTitle(),
                 card.getDescription(),
                 card.getStatus().name(),
-                TemporalFormatUtil.zdtToString(card.getCreatedTimestamp()),
+                TemporalUtil.toString(card.getCreatedTimestamp()),
                 card.getCreatedBy(),
-                TemporalFormatUtil.zdtToString(card.getUpdatedTimestamp()),
+                TemporalUtil.toString(card.getUpdatedTimestamp()),
                 card.getUpdatedBy()
         );
     }
