@@ -6,6 +6,7 @@ import com.cs.ku.present.dto.response.CardResponse;
 import com.cs.ku.present.entity.Card;
 import com.cs.ku.present.service.CardService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,13 +14,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
 @RestController
-@RequiredArgsConstructor
 @RequestMapping("/card")
+@RequiredArgsConstructor
 public class CardController {
 
     private final CardService cardService;
@@ -38,6 +41,7 @@ public class CardController {
     }
 
     @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
     public CardResponse save(@RequestBody CardRequest cardRequest) {
         Card card = cardService.save(cardRequest);
         return CardMapper.toCardResponse(card);
@@ -50,8 +54,12 @@ public class CardController {
     }
 
     @DeleteMapping("/{id}")
-    public void deleteById(@PathVariable String id) {
-        cardService.deleteById(id);
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteById(
+            @PathVariable String id,
+            @RequestParam(required = false, defaultValue = "false") boolean isHardDelete
+    ) {
+        cardService.deleteById(id, isHardDelete);
     }
 
 }
