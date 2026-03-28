@@ -14,18 +14,10 @@ public class TemporalUtil {
     private static final DateTimeFormatter ZDT_FORMAT = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSSSSSZ");
 
     public static String toString(ZonedDateTime in) {
-        if (in == null) {
-            throw new NullPointerException("ZonedDateTime is null");
-        }
-
         return in.format(ZDT_FORMAT);
     }
 
     public static String toString(LocalDate in) {
-        if (in == null) {
-            throw new NullPointerException("LocalDate is null");
-        }
-
         return in.format(LCD_FORMAT);
     }
 }
