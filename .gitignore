@@ -37,3 +37,4 @@ build/
 
 ### Unnecessary ###
 /assignment
+*.properties

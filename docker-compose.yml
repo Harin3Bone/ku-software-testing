@@ -31,56 +31,7 @@ services:
       timeout: 5s
       retries: 10
 
-  zookeeper:
-    image: confluentinc/cp-zookeeper:7.9.6
-    container_name: ku-zookeeper
-    restart: unless-stopped
-    environment:
-      ZOOKEEPER_CLIENT_PORT: 2181
-      ZOOKEEPER_TICK_TIME: 2000
-    ports:
-      - "2181:2181"
-    healthcheck:
-      test: ["CMD-SHELL", "nc -z localhost 2181"]
-      interval: 10s
-      timeout: 5s
-      retries: 10
-
-  kafka:
-    image: confluentinc/cp-kafka:7.9.6
-    container_name: ku-kafka
-    restart: unless-stopped
-    depends_on:
-      zookeeper:
-        condition: service_healthy
-    ports:
-      - "9092:9092"
-      - "29092:29092"
-    environment:
-      KAFKA_BROKER_ID: 1
-      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
-      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
-      KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
-      KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
-      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:29092,PLAINTEXT_HOST://localhost:9092
-      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
-      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
-      KAFKA_AUTO_CREATE_TOPICS_ENABLE: "true"
-    healthcheck:
-      test: ["CMD-SHELL", "kafka-topics --bootstrap-server localhost:9092 --list > /dev/null 2>&1"]
-      interval: 10s
-      timeout: 10s
-      retries: 10
 
 volumes:
   postgres_data:
   redis_data:
-
-# Spring Boot local configuration example when running app from IDE:
-# SPRING_DATASOURCE_URL=jdbc:postgresql://localhost:5432/ku_app
-# SPRING_DATASOURCE_USERNAME=ku_user
-# SPRING_DATASOURCE_PASSWORD=ku_password
-# SPRING_DATA_REDIS_HOST=localhost
-# SPRING_DATA_REDIS_PORT=6379
-# SPRING_KAFKA_BOOTSTRAP_SERVERS=localhost:9092
-
